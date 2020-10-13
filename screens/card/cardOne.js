@@ -3,9 +3,9 @@ import {View, Text, TouchableOpacity} from 'react-native';
 
 export default ({navigation}) => (
     <View>
-        <TouchableOpacity onPress={()=>navigation.navigate("Detail")}>
+        <TouchableOpacity onPress={() => navigation.navigate('cardTwo', {index: 1})}>
             <Text>
-                home!
+                Moviessads
             </Text>
         </TouchableOpacity>
     </View>

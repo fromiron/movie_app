@@ -7,6 +7,7 @@ import * as Font from "expo-font";
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import Stack from "./navigation/Stack";
+import Tabs from "./navigation/Tabs";
 
 
 const cacheImages = images =>
