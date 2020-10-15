@@ -5,6 +5,7 @@ import Tv from "../screens/Tv";
 import Search from "../screens/Search";
 import Fav from "../screens/Fav";
 import {Ionicons} from "@expo/vector-icons";
+import {Platform} from "react-native-web";
 
 const Tabs = createBottomTabNavigator();
 
@@ -22,20 +23,20 @@ export default ({navigation, route}) => {
         <Tabs.Navigator
             screenOptions={({route}) => ({
                 tabBarIcon: ({focused}) => {
-                    let icon;
+                    let icon = Platform.OS === "ios" ? "ios-" : "md-"; //OS 確認
                     const name = route.name;
                     switch (name) {
                         case "Movies" :
-                            icon = "ios-film";
+                            icon += "film";
                             break;
                         case "Tv" :
-                            icon = "ios-tv";
+                            icon += "tv";
                             break;
                         case "Search" :
-                            icon = "ios-search";
+                            icon += "search";
                             break;
                         case "Fav" :
-                            icon = "ios-star";
+                            icon += "star";
                             break;
                     }
                     return <Ionicons name={icon} color={focused ? "white" : "gray"} size={25}/>
