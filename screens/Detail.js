@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 
 export default () => (
-    <View>
+    <View style={{backgroundColor: "black"}}>
         <Text>
             Detail!
         </Text>

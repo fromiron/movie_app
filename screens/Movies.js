@@ -1,7 +1,9 @@
-import React from 'react';
-import {View, Text} from 'react-native';
-import SlideStack from "../navigation/SlideStack";
+import React from "react";
+import { View, Text, Button } from "react-native";
 
-export default () => (
-    <SlideStack/>
-)
+export default ({ navigation }) => (
+    <View style={{ flex: 1, backgroundColor: "black" }}>
+        <Text>Movies</Text>
+        <Button title="Movie" onPress={() => navigation.navigate("Detail")} />
+    </View>
+);
