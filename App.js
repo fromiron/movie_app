@@ -26,20 +26,15 @@ export default function App() {
     const loadAssets = () => {
         const images = cacheImages([
             "https://i.picsum.photos/id/325/200/300.jpg?hmac=Msn1Ui614fNi6HvLNovytf3IQx4fpJrJYRz59dR6TFQ",
-            "https://i.picsum.photos/id/1031/200/300.jpg?hmac=HVS-5o6kRugo6EcoZhPEsxm8Jnl7-J5tuEc20pN029c",
-            require("./assets/splash.png")]);
+            "https://i.picsum.photos/id/1031/200/300.jpg?hmac=HVS-5o6kRugo6EcoZhPEsxm8Jnl7-J5tuEc20pN029c"])
         const fonts = cacheFonts([Ionicons.font])
         return Promise.all([...images, ...fonts]); //imageとiconのPromiseを配列にしてリターン
     };
     const onFinish = () => setIsReady(true);
     return isReady ? (
-
         <NavigationContainer>
-
             <Stack/>
         </NavigationContainer>
-
-
     ) : (
         <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={console.error}/>)
 }
