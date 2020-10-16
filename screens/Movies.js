@@ -1,11 +1,22 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {View, Text} from "react-native";
 import {movieApi} from "../api";
 
 export default () => {
+    const [movies, setMovies] = useState({
+        nowPlaying: [],
+        popular: [],
+        upcoming: [],
+        nowPlayingError: null,
+        popularError: null,
+        upcomingError: null,
+
+    });
     const getData = async () => {
-        const [nowPlaying, error] = await movieApi.nowPlaying();
-        console.log(nowPlaying, error)
+        const [nowPlaying, nowPlayingError] = await movieApi.nowPlaying();
+        const [popular, popularError] = await movieApi.nowPlaying();
+        const [upcoming, upcomingError] = await movieApi.nowPlaying();
+        setMovies({nowPlaying, popular, upcoming, nowPlayingError, popularError, upcomingError})
     };
 
     useEffect(() => {
@@ -13,7 +24,7 @@ export default () => {
     }, [])
     return (
         <View style={{flex: 1, backgroundColor: "black"}}>
-            <Text>Movies</Text>
+            <Text style={{color: "white"}}>{movies.nowPlaying?.length}</Text>
         </View>
     )
 };
