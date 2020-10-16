@@ -35,7 +35,7 @@ export default ({navigation, route}) => {
                         case "Search" :
                             icon += "search";
                             break;
-                        case "Fav" :
+                        case "Discover" :
                             icon += "star";
                             break;
                     }
@@ -52,7 +52,7 @@ export default ({navigation, route}) => {
             <Tabs.Screen name={"Movies"} component={Movies}/>
             <Tabs.Screen name={"Tv"} component={Tv}/>
             <Tabs.Screen name={"Search"} component={Search}/>
-            <Tabs.Screen name={"Fav"} component={Fav}/>
+            <Tabs.Screen name={"Discover"} component={Fav}/>
         </Tabs.Navigator>
     )
 }
