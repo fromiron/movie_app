@@ -1,29 +1,38 @@
 import React from "react";
 import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
-import {ActivityIndicator} from "react-native";
+import {ActivityIndicator, Dimensions} from "react-native";
 import Slider from "../../components/Movies/Slider";
 
+const {width: WIDTH, height: HEIGHT} = Dimensions.get("screen");
 
 const Container = styled.View`
 flex: 1;
 background-color: black;
 justify-content: center;
 `
-
+const SliderContainer = styled.View`
+width: ${WIDTH}px;
+height: ${HEIGHT / 4}px;
+`
 
 export default ({loading, nowPlaying}) => (
     <Container>
         {loading ? <ActivityIndicator size="large" color="#00ff00"/> :
-            <>
-                <Swiper controlsEnabled={false} loop={true} timeout={3} >
+            <SliderContainer>
+                <Swiper controlsEnabled={false} loop={true} timeout={3}>
                     {nowPlaying.map(movie => (
-                        <Slider key={movie.id} title={movie.original_language} overview={movie.overview}
-                                votes={movie.vote_average} backgroundImage={movie.backdrop_path}/>
+                        <Slider key={movie.id}
+                                id={movie.id}
+                                title={movie.original_title}
+                                overview={movie.overview}
+                                votes={movie.vote_average}
+                                backgroundImage={movie.backdrop_path}
+                                poster={movie.poster_path}/>
                     ))}
 
                 </Swiper>
-            </>
+            </SliderContainer>
         }
 
     </Container>

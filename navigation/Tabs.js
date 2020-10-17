@@ -12,6 +12,8 @@ const Tabs = createBottomTabNavigator();
 
 const getHeaderName = route => route?.state?.routeNames[route.state.index] || "Movies";
 
+
+
 export default ({navigation, route}) => {
     useLayoutEffect(() => {
         const name = getHeaderName(route);
