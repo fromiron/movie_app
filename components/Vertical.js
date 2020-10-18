@@ -14,16 +14,14 @@ const Votes = styled.Text`
 color:white;
 `
 
-const Vertical = ({poster, title, votes}) => {
+const Vertical = ({poster, title, votes}) =>(
+    <Container>
+        <Poster url={apiImage(poster)}/>
+        <Title>{title.length > 10 ? `${title.slice(0, 10)}...` : title}</Title>
+        <Votes>{PaintStars(votes)}</Votes>
+    </Container>
+)
 
-    return (
-        <Container>
-            <Poster url={apiImage(poster)}/>
-            <Title>{title.length > 10 ? `${title.slice(0, 10)}...` : title}</Title>
-            <Votes>{PaintStars(votes)}</Votes>
-        </Container>
-    )
-}
 
 Vertical.prototype = {
     Poster: propsTypes.string.isRequired,

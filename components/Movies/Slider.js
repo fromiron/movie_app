@@ -58,7 +58,6 @@ font-size: 13px;
 
 
 const Slider = ({title, backgroundImage, votes, overview, poster}) => {
-
     return (
         <Container>
             <Bg source={{uri: apiImage(backgroundImage)}}/>

@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
-import {ActivityIndicator, Dimensions} from "react-native";
+import {ActivityIndicator, Dimensions, ScrollView} from "react-native";
 import Slider from "../../components/Movies/Slider";
 import Title from "../../components/Movies/Title";
-import {ScrollView} from "react-native";
 import Vertical from "../../components/Vertical";
 
 const {width: WIDTH, height: HEIGHT} = Dimensions.get("window");
@@ -42,7 +41,7 @@ export default ({loading, nowPlaying, popular}) => (
                 </SliderContainer>
                 <Container>
                     <Title title={"Popular Movies"}/>
-                    <ScrollView horizontal>
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         {popular.map(movie => (
                             <Vertical key={movie.id} title={movie.original_title}
                                       votes={movie.vote_average} poster={movie.poster_path}/>
