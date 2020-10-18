@@ -55,9 +55,8 @@ background-color: #60a3bc;
 border-radius: 3px;
 `;
 const ButtonText = styled.Text`
-color: #0a3d62;
-font-weight: bold;
-font-size: 17px;
+color: white;
+font-size: 13px;
 `;
 
 
@@ -77,7 +76,7 @@ const PaintStars = (votes) => {
 }
 
 
-const Slider = ({id, title, backgroundImage, votes, overview, poster}) => {
+const Slider = ({title, backgroundImage, votes, overview, poster}) => {
 
     PaintStars(votes)
     return (
@@ -87,14 +86,14 @@ const Slider = ({id, title, backgroundImage, votes, overview, poster}) => {
             <Content>
                 <Poster url={apiImage(poster)}/>
                 <Data>
-                    <Title>{title.slice(0, 25)}</Title>
+                    <Title>{title.length > 20 ? `${title.slice(0, 20)}...` : title}</Title>
                     <Vote>{PaintStars(votes)} / 5point</Vote>
-                    <Overview>{overview.slice(0, 80)}</Overview>
+                    <Overview>{overview.length > 80 ? `${overview.slice(0, 80)}...` : overview}</Overview>
 
                     <TouchableOpacity>
                         <Button>
                             <ButtonText onPress={() => alert(votes)}>
-                                More
+                                View details
                             </ButtonText>
 
                         </Button>
