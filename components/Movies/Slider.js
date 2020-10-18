@@ -4,6 +4,7 @@ import propTypes from "prop-types";
 import {apiImage} from "../../api";
 import Poster from "../Poster";
 import {TouchableOpacity} from "react-native";
+import PaintStars from "../PaintStars";
 
 
 const Container = styled.View`
@@ -39,10 +40,6 @@ color: white;
 margin-bottom: 7px;
 `
 
-const Stars = styled.Text`
-color: orange;
-font-size: 18px;
-`
 
 const Overview = styled.Text`
 color: white;
@@ -60,25 +57,8 @@ font-size: 13px;
 `;
 
 
-const PaintStars = (votes) => {
-    const intNum = Math.floor(votes);
-    const decimalNum = (votes % 1).toFixed(1) * 10;
-    let star = "";
-    for (let i = 0; i < Math.floor(intNum / 2); i++) {
-        star += "◆";
-    }
-    if (intNum % 2 === 1) star += "◈"
-    if (decimalNum >= 5) star += "◇"
-
-    return (
-        <Stars>{star}</Stars>
-    )
-}
-
-
 const Slider = ({title, backgroundImage, votes, overview, poster}) => {
 
-    PaintStars(votes)
     return (
         <Container>
             <Bg source={{uri: apiImage(backgroundImage)}}/>

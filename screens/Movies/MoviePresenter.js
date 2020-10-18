@@ -5,6 +5,7 @@ import {ActivityIndicator, Dimensions} from "react-native";
 import Slider from "../../components/Movies/Slider";
 import Title from "../../components/Movies/Title";
 import {ScrollView} from "react-native";
+import Vertical from "../../components/Vertical";
 
 const {width: WIDTH, height: HEIGHT} = Dimensions.get("window");
 
@@ -18,7 +19,7 @@ const Container = styled.View`
 `
 
 
-export default ({loading, nowPlaying}) => (
+export default ({loading, nowPlaying, popular}) => (
     <ScrollView
         style={{backgroundColor: "black"}}
         contentContainerStyle={{flex: 1, justifyContent: loading === true ? "center" : "flex-start"}}>
@@ -40,7 +41,13 @@ export default ({loading, nowPlaying}) => (
                     </Swiper>
                 </SliderContainer>
                 <Container>
-                    <Title title={"Sexy"}/>
+                    <Title title={"Popular Movies"}/>
+                    <ScrollView horizontal>
+                        {popular.map(movie => (
+                            <Vertical key={movie.id} title={movie.original_title}
+                                      votes={movie.vote_average} poster={movie.poster_path}/>
+                        ))}
+                    </ScrollView>
                 </Container>
             </>
         }
