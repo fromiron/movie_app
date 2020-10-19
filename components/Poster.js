@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types'
+import propTypes from 'prop-types'
 import styled from 'styled-components/native';
 
 const Image = styled.Image`
@@ -12,7 +12,7 @@ const Poster = ({url}) => (
     <Image source={{uri: url}}/>
 )
 
-Poster.prototype = {
-    url: PropTypes.string.isRequired
+Poster.propTypes = {
+    url: propTypes.string.isRequired
 }
 export default Poster;

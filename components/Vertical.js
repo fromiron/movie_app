@@ -14,7 +14,7 @@ const Votes = styled.Text`
 color:white;
 `
 
-const Vertical = ({poster, title, votes}) =>(
+const Vertical = ({poster, title, votes}) => (
     <Container>
         <Poster url={apiImage(poster)}/>
         <Title>{title.length > 10 ? `${title.slice(0, 10)}...` : title}</Title>
@@ -24,6 +24,7 @@ const Vertical = ({poster, title, votes}) =>(
 
 
 Vertical.prototype = {
+    id: propsTypes.number.isRequired,
     Poster: propsTypes.string.isRequired,
     title: propsTypes.string.isRequired,
     votes: propsTypes.number.isRequired
