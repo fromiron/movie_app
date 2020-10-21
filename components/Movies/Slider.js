@@ -5,6 +5,7 @@ import {apiImage} from "../../api";
 import Poster from "../Poster";
 import {TouchableOpacity} from "react-native";
 import PaintStars from "../PaintStars";
+import {trimText} from "../../utils";
 
 
 const Container = styled.View`
@@ -59,15 +60,16 @@ font-size: 13px;
 
 const Slider = ({title, backgroundImage, votes, overview, poster}) => {
     return (
+
         <Container>
             <Bg source={{uri: apiImage(backgroundImage)}}/>
 
             <Content>
-                <Poster url={apiImage(poster)}/>
+                <Poster url={poster}/>
                 <Data>
-                    <Title>{title.length > 20 ? `${title.slice(0, 20)}...` : title}</Title>
+                    <Title>{trimText(title, 20)}</Title>
                     <Vote>{PaintStars(votes)} / 5point</Vote>
-                    <Overview>{overview.length > 80 ? `${overview.slice(0, 80)}...` : overview}</Overview>
+                    <Overview>{trimText(overview, 80)}</Overview>
 
                     <TouchableOpacity>
                         <Button>

@@ -22,7 +22,10 @@ const Container = styled.View`
 export default ({loading, nowPlaying, popular, upcoming}) => (
     <ScrollView
         style={{backgroundColor: "black"}}
-        contentContainerStyle={{justifyContent: loading === true ? "center" : "flex-start"}}>
+        contentContainerStyle={{
+            flex: loading ? 1 : 0,
+            justifyContent: loading ? "center" : "flex-start"
+        }}>
 
         {loading ? <ActivityIndicator size="large" color="#00ff00"/> :
             <>
@@ -50,12 +53,14 @@ export default ({loading, nowPlaying, popular, upcoming}) => (
                     </ScrollView>
                     <Title title={"Coming soon"}/>
 
-                        {upcoming.map(movie => (
-                            <Horizontal key={movie.id} id={movie.id}
-                                        title={movie.original_title}
-                                        votes={movie.vote_average}
-                                        poster={movie.poster_path}/>
-                        ))}
+                    {upcoming.map(movie => (
+                        <Horizontal key={movie.id} id={movie.id}
+                                    title={movie.original_title}
+                                    releaseDate={movie.release_date}
+                                    poster={movie.poster_path}
+                                    overview={movie.overview}/>
+
+                    ))}
 
                 </Container>
             </>

@@ -2,10 +2,13 @@ import React from 'react';
 import styled from "styled-components/native";
 import propsTypes from "prop-types";
 import Poster from "./Poster";
-import {apiImage} from "../api";
 import PaintStars from "./PaintStars";
+import {trimText} from "../utils";
+import {TouchableOpacity} from "react-native";
 
 const Container = styled.View`
+margin: 0 10px;
+overflow: hidden;
 `
 const Title = styled.Text`
 color: white;
@@ -15,11 +18,14 @@ color:white;
 `
 
 const Vertical = ({poster, title, votes}) => (
-    <Container>
-        <Poster url={apiImage(poster)}/>
-        <Title>{title.length > 10 ? `${title.slice(0, 10)}...` : title}</Title>
-        <Votes>{PaintStars(votes)}</Votes>
-    </Container>
+    <TouchableOpacity onPress={() => alert(title)}>
+
+        <Container>
+            <Poster url={poster}/>
+            <Title>{trimText(title, 10)}</Title>
+            <Votes>{PaintStars(votes)}</Votes>
+        </Container>
+    </TouchableOpacity>
 )
 
 
